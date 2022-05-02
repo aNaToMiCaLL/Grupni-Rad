@@ -18,8 +18,8 @@ namespace WindowsFormsApplication1
             TableUpdate();
         }
 
-        public static String konekcioniString = "Server=localhost; Port=3306; " +
-            "Database=prodavnica; Uid=root; Pwd=";
+        string konekcioniString = Form6.konekcioniString;
+
         private void TableUpdate()
         {
             try
@@ -46,17 +46,32 @@ namespace WindowsFormsApplication1
         {
             try
             {
-                string query = "DELETE from stavka_narudzbenice where narudzebnica_id='" + textBox1.Text + "';" + 
+                int brojac = 0;
+                string upit = "SELECT narudzbenica_id from narudzbenica";
+                string query = "DELETE from stavka_narudzbenice where narudzbenica_id='" + textBox1.Text + "';" + 
                     "DELETE from narudzbenica where narudzbenica_id='" + textBox1.Text + "';";
                 MySqlConnection konekcija = new MySqlConnection(konekcioniString);
                 konekcija.Open();
-
+                MySqlDataReader reader;
+                MySqlCommand read = new MySqlCommand(upit, konekcija);
                 MySqlCommand cmd = new MySqlCommand(query, konekcija);
+                reader = read.ExecuteReader();
 
-                cmd.ExecuteNonQuery();
+                while (reader.Read())
+                {
+                    if (reader[0].ToString()==textBox1.Text ) brojac++;
+                }
+                reader.Close();
+                if (brojac > 0)
+                {
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Izbrisana narudzba !!!");
-
+                    MessageBox.Show("Izbrisana narudzba !!!");
+                }
+                else 
+                {
+                    MessageBox.Show("Unesite ID postojeće narudžbe !!!");
+                }
                 konekcija.Close();
             }
             catch (Exception ex)
@@ -83,6 +98,16 @@ namespace WindowsFormsApplication1
             this.Hide();
             Form2 fr2 = new Form2();
             fr2.Show();
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void izlazIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

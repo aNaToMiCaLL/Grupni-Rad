@@ -18,8 +18,7 @@ namespace WindowsFormsApplication1
             TableUpdate();
         }
 
-        public static String konekcioniString = "Server=localhost; Port=3306; " +
-            "Database=prodavnica; Uid=root; Pwd=";
+        string konekcioniString = Form6.konekcioniString;
 
         private void TableUpdate() 
         {
@@ -27,8 +26,8 @@ namespace WindowsFormsApplication1
             {
                 string query = "select * from kupac";
                 if (textBox1.Text != "" || textBox2.Text != "") query += " where ime=ime";
-                if (textBox1.Text != "") query += " and ime LIKE'" + textBox1.Text + "%' ";
-                if (textBox2.Text != "") query += " and prezime LIKE'" + textBox2.Text + "%' ";
+                if (textBox1.Text != "") query += " and ime LIKE '" + textBox1.Text + "%' ";
+                if (textBox2.Text != "") query += " and prezime LIKE '" + textBox2.Text + "%' ";
                 MySqlConnection konekcija = new MySqlConnection(konekcioniString);
                 konekcija.Open();
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, konekcija);
@@ -55,7 +54,7 @@ namespace WindowsFormsApplication1
             try
             {
                 String upit = "INSERT INTO kupac(ime, prezime, grad, adresa, " +
-                    " telefon, user, pass) VALUES " +
+                    " telefon, username, password) VALUES " +
                     " ('" + textBox3.Text + "', '" + textBox4.Text + "', '" + textBox5.Text + "', " +
                     " '" + textBox6.Text + "', '" + textBox8.Text + "', " +
                     " '" + textBox9.Text + "', '" + textBox10.Text + "') ";
@@ -98,8 +97,8 @@ namespace WindowsFormsApplication1
                 if (textBox5.Text != "") upit +=    " grad='" + textBox5.Text + "', " ;
                 if (textBox6.Text != "") upit +=    " adresa='" + textBox6.Text + "', " ;
                 if (textBox8.Text != "") upit +=   " telefon='" + textBox8.Text + "', " ;
-                if (textBox9.Text != "") upit += " user='" + textBox9.Text + "', ";
-                if (textBox10.Text != "") upit += " pass='" + textBox10.Text + "', ";
+                if (textBox9.Text != "") upit += " username='" + textBox9.Text + "', ";
+                if (textBox10.Text != "") upit += " password='" + textBox10.Text + "', ";
                 upit += " kupac_id='"+textBox7.Text+"'";
                 upit+= " WHERE kupac_id='" + textBox7.Text + "' ";
 
@@ -140,11 +139,22 @@ namespace WindowsFormsApplication1
             fr2.Show();
         }
 
-        private void kUPACTESTToolStripMenuItem_Click(object sender, EventArgs e)
+     
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Hide();
-            Form4 fr4 = new Form4();
-            fr4.Show();
+            Application.Exit();
         }
+
+        private void izlazIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+      
+
+     
+
+       
     }
 }

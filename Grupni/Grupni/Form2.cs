@@ -17,8 +17,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             TableUpdate();
         }
-        public static String konekcioniString = "Server=localhost; Port=3306; " +
-            "Database=prodavnica; Uid=root; Pwd=";
+
+        string konekcioniString = Form6.konekcioniString;
 
         private void TableUpdate()
         {
@@ -139,6 +139,20 @@ namespace WindowsFormsApplication1
             Form3 fr3 = new Form3();
             fr3.Show();
         }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void izlazIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
+
+      
 
     }
 }

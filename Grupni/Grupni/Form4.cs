@@ -17,9 +17,12 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             PrikaziTabelu();
             PrikaziTabelu2();
+            Cijena();
+            PrvaNarudzba();
         }
-        public static String konekcioniString = "Server=localhost; Port=3306; " +
-            "Database=prodavnica; Uid=root; Pwd=";
+
+        string konekcioniString = Form6.konekcioniString;
+        string kupacID = Form6.kupacID;
 
         private void PrikaziTabelu()
         {
@@ -47,7 +50,8 @@ namespace WindowsFormsApplication1
             {
             string query1 = "Select a.artikal_id,a.naziv_artikla,a.cijena,n.kolicina " +
                 "from artikal a,stavka_narudzbenice n,narudzbenica b " +
-                "where a.artikal_id=n.artikal_id and n.narudzebnica_id=b.narudzbenica_id and b.narudzbenica_id=(select max(narudzbenica_id) from narudzbenica); "; // Prikazuje drugu tabelu
+                "where a.artikal_id=n.artikal_id and n.narudzbenica_id=b.narudzbenica_id and "+
+                "b.narudzbenica_id=(select max(narudzbenica_id) from narudzbenica where kupac_id='"+kupacID+"'); "; // Prikazuje drugu tabelu
             MySqlConnection konekcija = new MySqlConnection(konekcioniString);
             konekcija.Open();
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query1, konekcija);
@@ -68,15 +72,16 @@ namespace WindowsFormsApplication1
             {
 
                 string query = "UPDATE skladiste s,stavka_narudzbenice n " +
-                "SET s.kolicina_stanje=s.kolicina_stanje-'" + Convert.ToInt32(textBox2.Text) + "' " +
-                "where s.artikal_id=n.artikal_id and n.artikal_id='" + Convert.ToInt32(textBox1.Text) + "'; "; //Update vrijednost u tabeli
+                "SET s.kolicina_stanje=s.kolicina_stanje-'" + textBox2.Text + "' " +
+                "where s.artikal_id=n.artikal_id and n.artikal_id='" + textBox1.Text + "'; "; //Update vrijednost u tabeli
 
-                string upit = "INSERT INTO stavka_narudzbenice(artikal_id,narudzebnica_id,kolicina)VALUES('" + textBox1.Text + "',(select max(narudzbenica_id) from narudzbenica),'" + textBox2.Text + "'); " +
-                "select kolicina,kolicina_stanje,s.artikal_id from skladiste s,stavka_narudzbenice n where s.artikal_id=n.artikal_id"; 
+                string upit = "INSERT INTO stavka_narudzbenice(artikal_id,narudzbenica_id,kolicina)VALUES('" + textBox1.Text + 
+                "',(select max(narudzbenica_id) from narudzbenica where kupac_id='" + kupacID + "'),'" + textBox2.Text + "'); " +
+                "select n.kolicina,s.kolicina_stanje,s.artikal_id from skladiste s,stavka_narudzbenice n where s.artikal_id=n.artikal_id and s.artikal_id='"+textBox1.Text+"'"; 
                 // Dodaje vrijednost i uzima vrijednosti kolicine i koliko je na stanju
 
                 string update = "UPDATE stavka_narudzbenice,narudzbenica SET kolicina=kolicina+'"+Convert.ToInt32(textBox2.Text)+"' where artikal_id='"+Convert.ToInt32(textBox1.Text)+"'"+
-                    " AND stavka_narudzbenice.narudzebnica_id=(select max(narudzbenica_id) from narudzbenica)";
+                    " AND stavka_narudzbenice.narudzbenica_id=(select max(narudzbenica_id) from narudzbenica where kupac_id='" + kupacID + "')";
 
                 string upit1 = "DELETE FROM stavka_narudzbenice ORDER BY stavka_id DESC LIMIT 1"; // brise ukoliko je a>b
 
@@ -134,6 +139,7 @@ namespace WindowsFormsApplication1
             DodajUTabelu();
             PrikaziTabelu();
             PrikaziTabelu2();
+            Cijena();
         }
 
         private void IzbrisiIzTabele() 
@@ -143,12 +149,12 @@ namespace WindowsFormsApplication1
 
                 string update = "UPDATE skladiste s,stavka_narudzbenice n, narudzbenica b " +
                 "SET s.kolicina_stanje=s.kolicina_stanje+'" + Convert.ToInt32(textBox2.Text)+ "',n.kolicina=n.kolicina-'"+Convert.ToInt32(textBox2.Text)+"' " +
-                "where s.artikal_id=n.artikal_id and n.artikal_id='" + Convert.ToInt32(textBox1.Text) + "' and n.narudzebnica_id=(select max(narudzbenica_id) from narudzbenica)";
+                "where s.artikal_id=n.artikal_id and n.artikal_id='" + Convert.ToInt32(textBox1.Text) + "' and n.narudzbenica_id=(select max(narudzbenica_id) from narudzbenica where kupac_id='" + kupacID + "')";
 
-                string delete="DELETE From stavka_narudzbenice where artikal_id='"+Convert.ToInt32(textBox1.Text)+"' and stavka_narudzbenice.narudzebnica_id=(select max(narudzbenica_id) from narudzbenica)";
+                string delete = "DELETE From stavka_narudzbenice where artikal_id='" + Convert.ToInt32(textBox1.Text) + "' and stavka_narudzbenice.narudzbenica_id=(select max(narudzbenica_id) from narudzbenica where kupac_id='" + kupacID + "')";
 
                 string reader = "select s.artikal_id,n.kolicina from skladiste s,stavka_narudzbenice n,narudzbenica where s.artikal_id=n.artikal_id and s.artikal_id='"+Convert.ToInt32(textBox1.Text)+"' "+
-                    "and n.narudzebnica_id=(select max(narudzbenica_id) from narudzbenica)"; 
+                    "and n.narudzbenica_id=(select max(narudzbenica_id) from narudzbenica where kupac_id='" + kupacID + "')"; 
 
                 MySqlConnection konekcija = new MySqlConnection(konekcioniString);
                 konekcija.Open();
@@ -172,7 +178,6 @@ namespace WindowsFormsApplication1
                 else if (Convert.ToInt32(textBox2.Text) <= 0)
                 {
                     MessageBox.Show("Količina ne smije biti manja od 1");
-                    del.ExecuteNonQuery();
                 }
                 else
                 {
@@ -199,13 +204,37 @@ namespace WindowsFormsApplication1
             IzbrisiIzTabele();
             PrikaziTabelu();
             PrikaziTabelu2();
+            Cijena();
+        }
+
+        private void Cijena()
+        {
+            try
+            {
+                string query = "select sum(s.količina*a.cijena) from artikal a,stavka_narudzbenice s,narudzbenica n " +
+                "where a.artikal_id=s.artikal_id and s.narudzbenica_id=n.narudzbenica_id " +
+                "and n.narudzbenica_id=(select max(narudzbenica_id) from narudzbenica where kupac_id='" + kupacID + "')";
+                MySqlConnection konekcija = new MySqlConnection(konekcioniString);
+                konekcija.Open();
+                MySqlCommand cmd = new MySqlCommand(query, konekcija);
+                MySqlDataReader reader;
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                textBox3.Text = reader[0].ToString();
+                reader.Close();
+                konekcija.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void KreirajNarudzbu()
         {
             DateTime now = DateTime.Now;
-            string query = "INSERT INTO narudzbenica(datum_narudzbe) VALUES('" + now.ToString("yyyy-MM-dd") + "')";
-            string nar = "select count(s.narudzebnica_id) from stavka_narudzbenice s,narudzbenica n where s.narudzebnica_id=(select max(narudzbenica_id) from narudzbenica)";
+            string query = "INSERT INTO narudzbenica(datum_narudzbe,kupac_id) VALUES('" + now.ToString("yyyy-MM-dd") + "','"+kupacID+"')";
+            string nar = "select count(s.narudzbenica_id) from stavka_narudzbenice s,narudzbenica n where s.narudzbenica_id=(select max(narudzbenica_id) from narudzbenica where kupac_id='" + kupacID + "')";
             MySqlConnection konekcija = new MySqlConnection(konekcioniString);
             konekcija.Open();
             MySqlCommand cmd1 = new MySqlCommand(nar, konekcija);
@@ -217,19 +246,44 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Dodajte nešta u trenutnu korpu");
             }
-            else {
-                MessageBox.Show("Zapoceli ste novu narudzbu");
+            else 
+            {
+            MessageBox.Show("Zapoceli ste novu narudzbu");
             MySqlCommand cmd = new MySqlCommand(query, konekcija);
             cmd.ExecuteNonQuery();
             }
             konekcija.Dispose();
 
         }
+
+        private void PrvaNarudzba()
+        {
+            int brojac = 0;
+            DateTime now = DateTime.Now;
+            string upit="SELECT kupac_id from narudzbenica where kupac_id='"+kupacID+"'";
+            string query = "INSERT INTO narudzbenica(datum_narudzbe,kupac_id) VALUES('" + now.ToString("yyyy-MM-dd") + "','" + kupacID + "')";
+            MySqlConnection konekcija = new MySqlConnection(konekcioniString);
+            konekcija.Open();
+            MySqlCommand cmd=new MySqlCommand(upit,konekcija);
+            MySqlCommand cmd1 = new MySqlCommand(query, konekcija);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            if (reader.HasRows) brojac++;
+            reader.Close();
+            if (brojac == 0) 
+            {
+                MessageBox.Show("Dobrodošli, započnite vašu prvu narudžbu");
+                cmd1.ExecuteNonQuery();
+            }
+            konekcija.Dispose();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             KreirajNarudzbu();
             PrikaziTabelu();
             PrikaziTabelu2();
+            Cijena();
         }
 
         private void prikazNarudžbiIStavkiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -238,5 +292,19 @@ namespace WindowsFormsApplication1
             Form5 fr5=new Form5();
             fr5.Show();
         }
+
+        private void Form4_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void izlazIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
+
+   
     }
 }

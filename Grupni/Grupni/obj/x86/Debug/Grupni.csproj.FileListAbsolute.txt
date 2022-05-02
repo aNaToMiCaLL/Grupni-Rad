@@ -11,3 +11,42 @@ C:\Users\arman\OneDrive\Desktop\IV Razred\PPJ\2 polu\Grupni rad\Grupni\Grupni\ob
 C:\Users\arman\OneDrive\Desktop\IV Razred\PPJ\2 polu\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.csproj.GenerateResource.Cache
 C:\Users\arman\OneDrive\Desktop\IV Razred\PPJ\2 polu\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.exe
 C:\Users\arman\OneDrive\Desktop\IV Razred\PPJ\2 polu\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.pdb
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.exe
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.pdb
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.csprojResolveAssemblyReference.cache
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form2.resources
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form3.resources
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form4.resources
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form5.resources
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form6.resources
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.csproj.GenerateResource.Cache
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\bin\Debug\Grupni.exe
+C:\Users\Madzak\Downloads\Grupni_rad\Grupni rad\Grupni\Grupni\bin\Debug\Grupni.pdb
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.exe
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.pdb
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\bin\Debug\Grupni.exe
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\bin\Debug\Grupni.pdb
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.csprojResolveAssemblyReference.cache
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form2.resources
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form3.resources
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form4.resources
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form5.resources
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form6.resources
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Madzak\Downloads\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.csproj.GenerateResource.Cache
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.exe
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.pdb
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\bin\Debug\Grupni.exe
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\bin\Debug\Grupni.pdb
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.csprojResolveAssemblyReference.cache
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form2.resources
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form3.resources
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form4.resources
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form5.resources
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Form6.resources
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\arman\OneDrive\Desktop\Grupni_rad_obojeno\Grupni rad\Grupni\Grupni\obj\x86\Debug\Grupni.csproj.GenerateResource.Cache
